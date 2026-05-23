@@ -6,7 +6,6 @@ import '../models/product.dart';
 class ProductService {
   final String _endpoint = ApiConstants.productsEndpoint;
 
-  // GET all products
   Future<List<Product>> fetchProducts() async {
     final response = await http.get(Uri.parse(_endpoint));
 
@@ -18,7 +17,6 @@ class ProductService {
     }
   }
 
-  // POST - create new product
   Future<Product> createProduct(Product product) async {
     final response = await http.post(
       Uri.parse(_endpoint),
@@ -33,7 +31,6 @@ class ProductService {
     }
   }
 
-  // PUT - update existing product
   Future<void> updateProduct(Product product) async {
     final response = await http.put(
       Uri.parse('$_endpoint/${product.id}'),
@@ -46,7 +43,6 @@ class ProductService {
     }
   }
 
-  // DELETE - delete product by id
   Future<void> deleteProduct(String id) async {
     final response = await http.delete(Uri.parse('$_endpoint/$id'));
 
