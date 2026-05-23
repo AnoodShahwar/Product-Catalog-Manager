@@ -33,13 +33,3 @@ A fully functional mobile app where you can view, add, edit, and delete products
 
 ---
 
-## 📁 Project Structure
-lib/
-├── core/constants/    # API URL
-├── core/theme/        # App colors and styles
-├── models/            # Product data class
-├── services/          # HTTP calls
-├── providers/         # State management
-└── views/             # UI screens and widgets
-
----
