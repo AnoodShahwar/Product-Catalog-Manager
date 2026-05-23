@@ -17,10 +17,14 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() => context.read<ProductProvider>().fetchProducts());
+    Future.microtask(() {
+      if (mounted) {
+        context.read<ProductProvider>().fetchProducts();
+      }
+    });
   }
 
-  Future<void> _confirmDelete(BuildContext context, String id) async {
+  Future<void> _confirmDelete(String id) async {
     final confirm = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
@@ -92,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     builder: (_) => ProductFormScreen(product: product),
                   ),
                 ),
-                onDelete: () => _confirmDelete(context, product.id!),
+                onDelete: () => _confirmDelete(product.id!),
               );
             },
           );
